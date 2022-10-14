@@ -1,7 +1,9 @@
+/* Start by creating the animation 'logo' on the logo id and setting duration to 5s*/
 #logo{
     animation-name: logo;
     animation-duration: 5s;
 }
+/* Using the logo animation we created in the last few lines- we can now set the beginning/ending width and opacity*/
 @keyframes  logo{
     from {
         width: 25px;
@@ -12,22 +14,29 @@
         opacity: 1;
     }
 }
+/* Set first preference font to Poppins then serif if Poppins not available*/
+/* Set background to the image of the concrete and then if that doesn't load white is back up*/
 body{
     font-family: 'Poppins', serif;
     background: url(../images/concrete_seamless.png), #f1f1f1;
 }
+/* Selects every header and uses flex to align the headers center oriented in column order */
 header{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+/* Like header- puts nav links in a vertical column*/
 .nav_links{
     display: flex;
     flex-direction: column;
 }
+/* assures links always remain default blue even after being visited*/
 .nav_item a:visited{
     color: #0000EE;
 }
+/* Styles headers that are only part of the card class using direct descendants*/
+/* Background color changed, border changed, padding applied on top and bottom, top left and right corners curved*/
 .card > header{
     background: #288088;
     border: 2px solid #45ADAD;
@@ -35,68 +44,83 @@ header{
     border-top-right-radius: 50px;
     border-top-left-radius: 50px;
 }
+/* Curves top right and left corner so there isn't an underlying color when curving headers*/
+/* intial size of the card class willbe 450 pixels*/
 .card{
     border-top-right-radius: 50px;
     border-top-left-radius: 50px;
     flex-basis: 450px;
 }
+/* Uses flex to edit the pricing class using wrap and aligning/justifying content allows left positioning while keeping numbers center in box*/
 .pricing{
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
 }
+/* Give images a border, margins, and set width*/
 .gallery img{
     border: 10px solid #50c7c7;
     margin: 10px;
     width: 300px;
 }
+/* Wraps images to correct positions so when screen is adjusted so are images*/
 .gallery{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+/* Different styling for bigger screen size last was for mobile view*/
 @media screen and (min-width: 900px) {
+    /* Adjusts the header content to be spaced out and in rows vs columns*/
     header{
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-between;
-
     }
+    /* Aligns links with first header versus going below*/
     .nav_links{
         display: flex;
         flex-direction: row;
     }
+    /* flex basis of card is set to 275 pixels versus 450px bc content is now in row flex direction*/
     .card{
         flex-basis: 275px;
     }
+    /* aligns proces to center*/
     .pricing{
         align-items: center;
     }
+    /* selects only the very first header to be used then it is declared sticky so it's always on the page*/
     body > header{
         position: sticky; top: 0;
     }
 }
+/* turns off animation for users with reduced motion settings */
 @media screen and (prefers-reduced-motion: reduce) {
     #logo{
         animation: none;
     }
 }
-
+/*media query for print mode- i.e. how the page is printed in portrait mode */
 @media print and (orientation: portrait){
+    /* Font is Arial with back up of Helvetica and ythe background is white instead of the concrete image*/
     body{
         font-family: 'Arial', Helvetica;
         background: #f1f1f1;
     }
+    /* sets width of nav to 100% so they span across whole space*/
     nav{
         width: 100%;
     }
+    /* Allows for links to match example by spacing around them and going horizontal*/
     .nav_links{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
     }
+    /* Very similar to 900 px display but items are aligned at the bottom so they have diff heights but the ends are all aligned the same*/
     .pricing{
         display: flex;
         flex-wrap: nowrap;
@@ -104,13 +128,16 @@ header{
         align-content: center;
         align-items: end;
     }
+    /* gives card class border and size of 325 px */
     .card{
         border: 2px solid #45ADAD;
         flex-basis: 325px;
     }
+    /* turns off the display for both the gallery images and the gallery text that says gallery*/
     #gallery, .gallery{
         display: none;
     }
+    /* Adds a thumbs up emoticon to after every second list element that is inside the card*/
     main ul li:nth-child(2)::after{
         content: '\1F44D';
     }
